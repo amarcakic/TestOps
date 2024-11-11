@@ -1,0 +1,5 @@
+# Use the pre-built selenium standalone Chrome image
+FROM selenium/standalone-chrome:latest
+
+# Expose the port that the Chrome Node Pod will be running on
+EXPOSE 4444

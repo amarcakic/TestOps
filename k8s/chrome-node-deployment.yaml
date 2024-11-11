@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chrome-node-deployment
+  labels:
+    app: chrome-node
+spec:
+  replicas: 1  # Adjust replicas if needed
+  selector:
+    matchLabels:
+      app: chrome-node
+  template:
+    metadata:
+      labels:
+        app: chrome-node
+    spec:
+      containers:
+      - name: chrome-node
+        image: public.ecr.aws/f8x3i1w1/chrome-node:latest
+        ports:
+        - containerPort: 4444
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chrome-node-service
+spec:
+  selector:
+    app: chrome-node
+  ports:
+    - protocol: TCP
+      port: 4444
+      targetPort: 4444

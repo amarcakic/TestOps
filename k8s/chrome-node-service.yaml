@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: chrome-node-service
+spec:
+  selector:
+    app: chrome-node
+  ports:
+  - protocol: TCP
+    port: 4444
+    targetPort: 4444
+  type: ClusterIP
